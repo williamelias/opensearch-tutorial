@@ -99,8 +99,30 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
 - Run: `docker compose up -d`
 
-- Verify if project is running correctly : `curl https://localhost:9200 -ku user:password`
+**Verify if project is running correctly**  
 
+  run: `curl https://localhost:9200 -ku <user>:<password>`
+
+  expected output:
+    `
+    {
+      "name" : "opensearch-node1",
+      "cluster_name" : "opensearch-cluster",
+      "cluster_uuid" : "uuid",
+      "version" : {
+        "distribution" : "opensearch",
+        "number" : "x.y.z",
+        "build_type" : "tar",
+        "build_hash" : "value",
+        "build_date" : "%y-%m-%dT%H:%M%Sz",
+        "build_snapshot" : false,
+        "lucene_version" : "x.y.z",
+        "minimum_wire_compatibility_version" : "x.y.z",
+        "minimum_index_compatibility_version" : "x.y.z"
+      },
+      "tagline" : "The OpenSearch Project: https://opensearch.org/"
+    }
+    `
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,14 +152,18 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
 #### Populating data
 
-the example bellow represents interaction with opensearch api:
+the example bellow represents interaction with opensearch api
 
-- first of all, creating a index called movies
-- in second step we create single movie document and next create many movies by bulk_movies.json file
+- first of all, creating a index called movies;
+- in second step we create single movie document and next create many movies by bulk_movies.json file;
 
 **Index creation**
 
 `curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies' -H 'Content-Type: application/json'`
+
+expected output: 
+
+`{"acknowledged":true,"shards_acknowledged":true,"index":"movies"}`
 
 **Putting single document**:
 
@@ -146,6 +172,20 @@ the example bellow represents interaction with opensearch api:
 **Putting multiple documents**
 
 `curl -XPOST -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k 'https://localhost:9200/movies/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'`
+
+expected output:
+
+`{
+    "took":47,
+    "errors":false,
+    "items":[{"create":{"_index":"movies","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}}]
+}`
+
+**See created index**
+
+After executed bulk creation we can access opensearch dashboard to see created index
+
+![verifyindex](./static/gif/verify_index_creation.gif)
 
 
 #### Searching data
