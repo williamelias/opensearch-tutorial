@@ -1,24 +1,3 @@
-##
-
-## main concepts
-
-- document: is object stored in json format
-- index: is a collection of documents
-- nodes: serves that process your requests
-- cluster: collection of nodes
-- shards: splits of nodes
-
-
-## testing instalation
-
-
-- curl https://localhost:9200 -ku admin:q^wER4_@!
-
-
-## configuration
-
-https://opensearch.org/docs/latest/install-and-configure/install-opensearch/index/
-
 
 ## Third party packages
 
@@ -65,9 +44,6 @@ in /etc/logstash/logstash.yml add 'config.support_escapes: true'
 <hr>
 
 # AWS OpenSearch tutorial 
-
-**base reference**: https://github.com/johnny-chivers/amazon-opensearch-service
-
 
 
 ## putting data

@@ -1,2 +1,4 @@
 .env
 postgresql-42.7.4.jar
+students.json
+integration_with_logstash

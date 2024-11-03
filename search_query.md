@@ -1,17 +1,3 @@
-# overview 
-
-the example bellow represents interaction with opensearch api:
-
-- first of all, creating a index called students
-- searching in student index 
-
-## index creation 
-
-curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/students' -H 'Content-Type: application/json'
-
-## bulk document creation
-
-curl -XPOST -u 'admin:q^wER4_@!' -k 'https://localhost:9200/students/_bulk' --data-binary @students.json -H 'Content-Type: application/json'
 
 # search 
 
@@ -31,21 +17,8 @@ curl -X GET -u 'admin:q^wER4_@!' -k "https://localhost:9200/students/_search?pre
     }
   }
 }'
-## search query match all
-{ex
-  "query": {
-    "match_all": {}
-  }
-}'
-## search query with body
 
-{
-  "query": {
-    "match": {
-      "name": "bob"
-    }
-  }
-}'
+
 
 
 

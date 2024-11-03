@@ -1,0 +1,20 @@
+{"create":{"_index":"movies","_id": 1}}
+{"director": "Burton, Tim", "genre": ["Comedy","Sci-Fi"], "year": 1996, "actor": ["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], "title": "Mars Attacks!"}
+{"create":{"_index":"movies","_id": 2}}
+{"title": "Kill Bill: Volume 1", "director": "Quentin Tarantino", "genre": ["Action", "Crime"], "year": 2003, "actor": ["Uma Thurman", "David Carradine", "Daryl Hannah"]}
+{"create":{"_index":"movies","_id": 3}}
+{"title": "Kill Bill: Volume 2", "director": "Quentin Tarantino", "genre": ["Action", "Crime"], "year": 2004, "actor": ["Uma Thurman", "David Carradine", "Daryl Hannah"]}
+{"create":{"_index":"movies","_id": 4}}
+{"title": "Kill Bill: Volume 3", "director": "Quentin Tarantino", "genre": ["Action", "Crime"], "year": 2006, "actor": ["Uma Thurman", "David Carradine", "Daryl Hannah"]}
+{"create":{"_index":"movies","_id": 5}}
+{"title": "Once Upon a Time... in Hollywood", "director": "Quentin Tarantino", "genre": ["Action", "Comedy", "Drama"], "year": 2019, "actor": ["Leonardo DiCaprio", "Brad Pitt", "Margot Robbie"]}
+{"create":{"_index":"movies","_id": 6}}
+{"title": "Beetlejuice", "director": "Tim Burton", "genre": ["Comedy", "Fantasy"], "year": 1988, "actor": ["Alec Baldwin", "George Clooney", "Mary Steenbuck"]}
+{"create":{"_index":"movies","_id": 7}}
+{"title": "Alice in Wonderland", "director": "Tim Burton", "genre": ["Adventure", "Family", "Fantasy"], "year": 2010, "actor": ["Mia Wasikowska", "Judy Garland", "Timothy Hutton"]}
+{"create":{"_index":"movies","_id": 8}}
+{"title": "Alice Through the Looking Glass", "director": "Tim Burton", "genre": ["Adventure", "Family", "Fantasy"], "year": 2016, "actor": ["Mia Wasikowska", "Judy Garland", "Timothy Hutton"]}
+{"create":{"_index":"movies","_id": 9}}
+{"title": "Corpse Brides", "director": "Tim Burton", "genre": ["Drama", "Romance"], "year": 2005, "actor": ["Johnny Depp", "Orlando Bloom", "Keira Knightley"]}
+{"create":{"_index":"movies","_id": 10}}
+{"title": "Inglourious Basterds", "director": "Quentin Tarantino", "genre": ["Action", "Drama", "War"], "year": 2009, "actor": ["Brad Pitt", "Diane Kruger", "Eddie Redmayne"]}
