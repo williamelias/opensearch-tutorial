@@ -28,14 +28,19 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#pull-requests">Pull Request</a></li>
-    <li><a href="#license">License</a></li>
+    <li>
+      <a href="#roadmap">Interacting with OpenSearch API</a>
+      <ul>
+        <li><a href="#Opensearch's main concepts"></a>Opensearch's main concepts</li>
+        <li><a href="#Project Scope"></a>Project Scope</li>
+        <li><a href="#Populating data"></a>Populating data</li>
+        <li><a href="#Searching data"></a>Searching data</li>
+      </ul>
+    </li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
