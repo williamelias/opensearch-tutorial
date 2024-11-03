@@ -52,6 +52,7 @@
 
 This project is designed to learn about OpenSearch using specificly Search area.
 
+<hr>
 
 ### Built With
 
@@ -62,6 +63,7 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<hr>
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -90,15 +92,14 @@ This project is designed to learn about OpenSearch using specificly Search area.
    ```
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- USAGE EXAMPLES -->
 #### Usage
 
-- Create `.env` file according to `example.env` adding correct values to the variables
+- before starting the application it is necessary to create `.env` file according to `example.env` adding correct values to the variables
 
-- Run: `docker compose up -d`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 **Check that the project is being carried out correctly**  
 
@@ -150,7 +151,8 @@ curl https://localhost:9200 -ku <user>:<password>
 
 - base structure of  movies document
 
-  ```json{
+  ```json
+  {
         "director": "",
         "genre": ["",""],
         "year": ,
@@ -199,15 +201,19 @@ curl -XPUT -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k  'http://localhost
 curl -XPOST -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k 'https://localhost:9200/movies/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'
 ```
 
-Expected output:
+<details>
+  <summary>Expected output</summary>
 
-```json
-{
-    "took":47,
-    "errors":false,
-    "items":[{"create":{"_index":"movies","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}}]
-}
-```
+  ```json
+  {
+      "took":47,
+      "errors":false,
+      "items":[{"create":{"_index":"movies","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}}]
+  }
+  ```
+</details>
+
+<br>
 
 **See created index**
 
@@ -215,6 +221,8 @@ After executed bulk creation we can access opensearch dashboard to see created i
 
 ![verifyindex](./static/gif/verify_index.gif)
 
+
+<hr>
 
 #### Searching data
 
