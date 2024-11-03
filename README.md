@@ -103,7 +103,7 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
   run: `curl https://localhost:9200 -ku <user>:<password>`
 
-  expected output:
+  Expected output:
     `
     {
       "name" : "opensearch-node1",
@@ -162,7 +162,7 @@ the example bellow represents interaction with opensearch api
 ```sh
 curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies' -H 'Content-Type: application/json'
 ```
-expected output: 
+Expected output: 
 
 ```json
 {"acknowledged":true,"shards_acknowledged":true,"index":"movies"}
@@ -187,7 +187,7 @@ curl -XPUT -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k  'http://localhost
 curl -XPOST -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k 'https://localhost:9200/movies/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'
 ```
 
-expected output:
+Expected output:
 
 ```json
 {
@@ -210,32 +210,344 @@ In this step we will use the DSL mechanism to search data using query param in r
 
 **Match all documents**
 
-  ```sh
-  curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'{
-    "query": {
-      "match_all": {}
-    }
-  }'
-  ```
+This example will return all documents stored before
 
-this example will return all documents stored before
+```sh
+curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'{
+  "query": {
+    "match_all": {}
+  }
+}'
+```
+
+<details>
+    <summary>Expected output:
+</summary>
+    
+  ```json
+    {
+    "took" : 3,
+    "timed_out" : false,
+    "_shards" : {
+      "total" : 1,
+      "successful" : 1,
+      "skipped" : 0,
+      "failed" : 0
+    },
+    "hits" : {
+      "total" : {
+        "value" : 10,
+        "relation" : "eq"
+      },
+      "max_score" : 1.0,
+      "hits" : [
+        {
+          "_index" : "movies",
+          "_id" : "1",
+          "_score" : 1.0,
+          "_source" : {
+            "director" : "Burton, Tim",
+            "genre" : [
+              "Comedy",
+              "Sci-Fi"
+            ],
+            "year" : 1996,
+            "actor" : [
+              "Jack Nicholson",
+              "Pierce Brosnan",
+              "Sarah Jessica Parker"
+            ],
+            "title" : "Mars Attacks!"
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "2",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Kill Bill: Volume 1",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Crime"
+            ],
+            "year" : 2003,
+            "actor" : [
+              "Uma Thurman",
+              "David Carradine",
+              "Daryl Hannah"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "3",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Kill Bill: Volume 2",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Crime"
+            ],
+            "year" : 2004,
+            "actor" : [
+              "Uma Thurman",
+              "David Carradine",
+              "Daryl Hannah"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "4",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Kill Bill: Volume 3",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Crime"
+            ],
+            "year" : 2006,
+            "actor" : [
+              "Uma Thurman",
+              "David Carradine",
+              "Daryl Hannah"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "5",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Once Upon a Time... in Hollywood",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Comedy",
+              "Drama"
+            ],
+            "year" : 2019,
+            "actor" : [
+              "Leonardo DiCaprio",
+              "Brad Pitt",
+              "Margot Robbie"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "6",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Beetlejuice",
+            "director" : "Tim Burton",
+            "genre" : [
+              "Comedy",
+              "Fantasy"
+            ],
+            "year" : 1988,
+            "actor" : [
+              "Alec Baldwin",
+              "George Clooney",
+              "Mary Steenbuck"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "7",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Alice in Wonderland",
+            "director" : "Tim Burton",
+            "genre" : [
+              "Adventure",
+              "Family",
+              "Fantasy"
+            ],
+            "year" : 2010,
+            "actor" : [
+              "Mia Wasikowska",
+              "Judy Garland",
+              "Timothy Hutton"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "8",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Alice Through the Looking Glass",
+            "director" : "Tim Burton",
+            "genre" : [
+              "Adventure",
+              "Family",
+              "Fantasy"
+            ],
+            "year" : 2016,
+            "actor" : [
+              "Mia Wasikowska",
+              "Judy Garland",
+              "Timothy Hutton"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "9",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Corpse Brides",
+            "director" : "Tim Burton",
+            "genre" : [
+              "Drama",
+              "Romance"
+            ],
+            "year" : 2005,
+            "actor" : [
+              "Johnny Depp",
+              "Orlando Bloom",
+              "Keira Knightley"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "10",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "Inglourious Basterds",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Drama",
+              "War"
+            ],
+            "year" : 2009,
+            "actor" : [
+              "Brad Pitt",
+              "Diane Kruger",
+              "Eddie Redmayne"
+            ]
+          }
+        }
+      ]
+    }
+  }
+  ```
+</details>
+
+<hr>
 
 **Search query with body**
 
-  ```sh
-  curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'
-  {
-    "query": {
-      "match": {
-        "title": "Kill Bill"
-      }
+This example will return only documents that has 'Kill Bill' present in 'title' attribute.
+We have three movies with this specification:
+
+- Kill Bill: Volume 1
+- Kill Bill: Volume 2
+- Kill Bill: Volume 3
+
+
+```sh
+curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "match": {
+      "title": "Kill Bill"
     }
-  }'
-  ```
+  }
+}'
+```
 
-this example will return only document that has 'Kill Bill' present in 'title' attribute
+<details>
+<summary>Expected Output</summary>
 
+  ```json
+    {
+    "took" : 9,
+    "timed_out" : false,
+    "_shards" : {
+      "total" : 1,
+      "successful" : 1,
+      "skipped" : 0,
+      "failed" : 0
+    },
+    "hits" : {
+      "total" : {
+        "value" : 3,
+        "relation" : "eq"
+      },
+      "max_score" : 2.1073918,
+      "hits" : [
+        {
+          "_index" : "movies",
+          "_id" : "2",
+          "_score" : 2.1073918,
+          "_source" : {
+            "title" : "Kill Bill: Volume 1",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Crime"
+            ],
+            "year" : 2003,
+            "actor" : [
+              "Uma Thurman",
+              "David Carradine",
+              "Daryl Hannah"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "3",
+          "_score" : 2.1073918,
+          "_source" : {
+            "title" : "Kill Bill: Volume 2",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Crime"
+            ],
+            "year" : 2004,
+            "actor" : [
+              "Uma Thurman",
+              "David Carradine",
+              "Daryl Hannah"
+            ]
+          }
+        },
+        {
+          "_index" : "movies",
+          "_id" : "4",
+          "_score" : 2.1073918,
+          "_source" : {
+            "title" : "Kill Bill: Volume 3",
+            "director" : "Quentin Tarantino",
+            "genre" : [
+              "Action",
+              "Crime"
+            ],
+            "year" : 2006,
+            "actor" : [
+              "Uma Thurman",
+              "David Carradine",
+              "Daryl Hannah"
+            ]
+          }
+        }
+      ]
+    }
+  }
+```
+</details>
 
+<hr>
 
 **Boolean search query**
 
@@ -270,6 +582,7 @@ this example will return only document that has 'Kill Bill' present in 'title' a
   - The bool and two match clauses are used in query context, which means that they are used to score how well each document matches.
 
   - The filter parameter indicates filter context. Its term and range clauses are used in filter context. They will filter out documents which do not match, but they will not affect the score for matching documents.
+
 
 <!-- CONTACT -->
 ## Contact
