@@ -1,0 +1,16 @@
+{"create":{"_index":"students","_id": 1}}
+{"name": "John Doe","age": 30,"gender":"male"}
+{"create":{"_index":"students","_id": 2}}
+{"name": "Jane Doe","age": 25,"gender":"male"}
+{"create":{"_index":"students","_id": 3}}
+{"name": "Bob Smith","age": 40,"gender":"male"}
+{"create":{"_index":"students","_id": 4}}
+{"name": "Alice Smith","age": 35,"gender":"male"}
+{"create":{"_index":"students","_id": 5}}
+{"name": "ana alves","age": 29,"gender":"female"}
+{"create":{"_index":"students","_id": 6}}
+{"name": "bruna alves","age": 25,"gender":"female"}
+{"create":{"_index":"students","_id": 7}}
+{"name": "ana de armas","age": 31,"gender":"female"}
+{"create":{"_index":"students","_id": 8}}
+{"name": "Alice Smith","age": 35,"gender":"male"}
