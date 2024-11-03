@@ -141,14 +141,14 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
 - base structure of  movies document :
 
-  `{
-      "director": "",
-      "genre": ["",""],
-      "year": ,
-      "actor": [""],
-      "title": ""
-  }`
-
+  ```json{
+        "director": "",
+        "genre": ["",""],
+        "year": ,
+        "actor": [""],
+        "title": ""
+  }
+  ```
 
 #### Populating data
 
@@ -159,33 +159,49 @@ the example bellow represents interaction with opensearch api
 
 **Index creation**
 
-`curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies' -H 'Content-Type: application/json'`
-
+```sh
+curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies' -H 'Content-Type: application/json'
+```
 expected output: 
 
-`{"acknowledged":true,"shards_acknowledged":true,"index":"movies"}`
+```json
+{"acknowledged":true,"shards_acknowledged":true,"index":"movies"}
+```
 
 **Putting single document**:
 
-`curl -XPUT -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k  'http://localhost:9200/movies/_doc/1' -d '{"director": "Burton, Tim", "genre": ["Comedy","Sci-Fi"], "year": 1996, "actor": ["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], "title": "Mars Attacks!"}' -H 'Content-Type: application/json'`
+```sh
+curl -XPUT -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k  'http://localhost:9200/movies/_doc/1' -d '
+{
+  "director": "Burton, Tim", 
+  "genre": ["Comedy","Sci-Fi"], 
+  "year": 1996, 
+  "actor": ["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], 
+  "title": "Mars Attacks!"}' 
+  -H 'Content-Type: application/json'
+```
 
 **Putting multiple documents**
 
-`curl -XPOST -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k 'https://localhost:9200/movies/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'`
+```json
+curl -XPOST -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k 'https://localhost:9200/movies/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'
+```
 
 expected output:
 
-`{
+```json
+{
     "took":47,
     "errors":false,
     "items":[{"create":{"_index":"movies","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}}]
-}`
+}
+```
 
 **See created index**
 
 After executed bulk creation we can access opensearch dashboard to see created index
 
-![verifyindex](./static/gif/verify_index_creation.gif)
+![verifyindex](./static/gif/verify_index.gif)
 
 
 #### Searching data
@@ -194,24 +210,28 @@ In this step we will use the DSL mechanism to search data using query param in r
 
 **Match all documents**
 
-  `curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'{
+  ```sh
+  curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'{
     "query": {
       "match_all": {}
     }
-  }'`
+  }'
+  ```
 
 this example will return all documents stored before
 
 **Search query with body**
 
-  `curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'
+  ```sh
+  curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'
   {
     "query": {
       "match": {
         "title": "Kill Bill"
       }
     }
-  }'`
+  }'
+  ```
 
 this example will return only document that has 'Kill Bill' present in 'title' attribute
 
@@ -219,20 +239,22 @@ this example will return only document that has 'Kill Bill' present in 'title' a
 
 **Boolean search query**
 
-`curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'
-  {
-      "query": { 
-          "bool": { 
-          "must": [
-              { "match": { "title": "Kill Bill" }},
-          ],
-          "filter": [ 
-              { "range": { "year": { "gte": "2004" }}}
-              { "term":  { "genre": "Crime" }},
-          ]
-          }
-      }
-  }'`
+  ```sh
+  curl -X GET -u '<user>:<OPENSEARCH_INITIAL_ADMIN_PASSWORD>' -k "https://localhost:9200/movies/_search?pretty" -H 'Content-Type: application/json' -d'
+    {
+        "query": { 
+            "bool": { 
+            "must": [
+                { "match": { "title": "Kill Bill" }},
+            ],
+            "filter": [ 
+                { "range": { "year": { "gte": "2004" }}}
+                { "term":  { "genre": "Crime" }},
+            ]
+            }
+        }
+  }'
+  ```
 
   - We have three movies called 'Kill Bill':
     - first: created in 2003

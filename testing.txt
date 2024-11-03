@@ -1,0 +1,25 @@
+# verify if is running
+
+curl https://localhost:9200 -ku admin:q^wER4_@!
+
+# create index
+
+curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies' -H 'Content-Type: application/json'
+
+running second time raises exception like that:
+
+{"error":{"root_cause":[{"type":"resource_already_exists_exception","reason":"index [movies/cqeTvgvKQqKg3NoNCqep5g] already exists","index":"movies","index_uuid":"cqeTvgvKQqKg3NoNCqep5g"}],"type":"resource_already_exists_exception","reason":"index [movies/cqeTvgvKQqKg3NoNCqep5g] already exists","index":"movies","index_uuid":"cqeTvgvKQqKg3NoNCqep5g"},"status":400}
+
+
+# bulk creation
+
+
+curl -XPOST -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'
+
+expected output
+
+{
+    "took":47,
+    "errors":false,
+    "items":[{"create":{"_index":"movies","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}}]
+}
