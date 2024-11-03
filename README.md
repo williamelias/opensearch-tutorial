@@ -99,7 +99,7 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
 - Run: `docker compose up -d`
 
-**Verify if project is running correctly**  
+**Check that the project is being carried out correctly**  
 
 run:
 ```sh
@@ -147,7 +147,7 @@ curl https://localhost:9200 -ku <user>:<password>
 
 **project scope**
 
-- base structure of  movies document :
+- base structure of  movies document
 
   ```json{
         "director": "",
@@ -160,16 +160,19 @@ curl https://localhost:9200 -ku <user>:<password>
 
 #### Populating data
 
-the example bellow represents interaction with opensearch api
+The example bellow represents interaction with opensearch api
 
 - first of all, creating a index called movies;
 - in second step we create single movie document and next create many movies by bulk_movies.json file;
 
 **Index creation**
 
+We need to create an index before we start with the tests, the index will be called 'movies' and in the command bellow we create it
+
 ```sh
 curl -XPUT -u 'admin:q^wER4_@!' -k 'https://localhost:9200/movies' -H 'Content-Type: application/json'
 ```
+
 Expected output: 
 
 ```json
