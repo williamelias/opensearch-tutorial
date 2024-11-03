@@ -101,31 +101,39 @@ This project is designed to learn about OpenSearch using specificly Search area.
 
 **Verify if project is running correctly**  
 
-  run: `curl https://localhost:9200 -ku <user>:<password>`
+run:
+```sh
+curl https://localhost:9200 -ku <user>:<password>
+```
 
-  Expected output:
-    `
-    {
-      "name" : "opensearch-node1",
-      "cluster_name" : "opensearch-cluster",
-      "cluster_uuid" : "uuid",
-      "version" : {
-        "distribution" : "opensearch",
-        "number" : "x.y.z",
-        "build_type" : "tar",
-        "build_hash" : "value",
-        "build_date" : "%y-%m-%dT%H:%M%Sz",
-        "build_snapshot" : false,
-        "lucene_version" : "x.y.z",
-        "minimum_wire_compatibility_version" : "x.y.z",
-        "minimum_index_compatibility_version" : "x.y.z"
-      },
-      "tagline" : "The OpenSearch Project: https://opensearch.org/"
-    }
-    `
+<details>
+<summary>Expected output</summary>
+
+  ```json
+  {
+    "name" : "opensearch-node1",
+    "cluster_name" : "opensearch-cluster",
+    "cluster_uuid" : "uuid",
+    "version" : {
+      "distribution" : "opensearch",
+      "number" : "x.y.z",
+      "build_type" : "tar",
+      "build_hash" : "value",
+      "build_date" : "%y-%m-%dT%H:%M%Sz",
+      "build_snapshot" : false,
+      "lucene_version" : "x.y.z",
+      "minimum_wire_compatibility_version" : "x.y.z",
+      "minimum_index_compatibility_version" : "x.y.z"
+    },
+    "tagline" : "The OpenSearch Project: https://opensearch.org/"
+  }
+  ```
+
+</details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<hr>
 
 ## Interacting with OpenSearch API
 
