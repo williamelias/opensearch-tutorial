@@ -1,6 +1,7 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
+<img src="./static/img/logo_project_opensearch.png">
 <br />
 <div align="center">
   <a href="https://github.com/williamelias/opensearch-tutorial">
